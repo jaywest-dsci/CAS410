@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Charity Water Landing Page</title>
+  <link rel="stylesheet" href="styles.css" />
+  
+</head>
+<body>
+  <!-- Top Banner -->
+  <header class="banner" style="z-index: 998;">Clean Water Charity</header>
+
+  <!-- Modal -->
+  <div id="email-modal" class="modal" style="z-index: 1000;">
+    <div class="modal-content">
+      <h2>Subscribe for Monthly Updates</h2>
+      <p>Enter your email to receive news and updates from Charity Water.</p>
+      <form id="email-form">
+        <input type="email" id="email-input" placeholder="Your email address" required />
+        <button type="submit">Subscribe</button>
+      </form>
+      <button id="close-modal" class="close-button">&times;</button>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Clean Water for Everyone</h1>
+    <p>Join us in bringing safe, clean water to communities in need.</p>
+  </section>
+
+  <!-- Story Section -->
+  <section class="story">
+    <h2>Our Story</h2>
+    <p>
+      Charity Water is dedicated to solving the global water crisis. Since 2006, we have funded
+      over 60,000 water projects in 29 countries, bringing clean and safe drinking water to more than 11 million people.
+      We believe that clean water is a basic human right — not a privilege.
+    </p>
+  </section>
+
+  <!-- Impact Story Section -->
+  <section class="impact-story">
+    <h2>Real Impact: Meet Amina</h2>
+    <div class="impact-content">
+      <img
+        src="https://media.istockphoto.com/id/1271730067/photo/african-woman-carrying-water.jpg?s=1024x1024&w=is&k=20&c=hGrJdzQ74gHLs0bGdQFmv9VI9G1il2qHuXD8t1IcLpw="
+        alt="Amina smiling with clean water"
+        class="impact-image"
+      />
+      <p>
+        Amina used to walk miles every day to collect water for her family. This prevented her from being able to go 
+        to school. Thanks to your support, her village now has a clean water well.
+        With the help of the new well, Amina can now go to school. Not only did it affect her life
+        but now her family is also healthier and happier
+      </p>
+    </div>
+  </section>
+
+  <!-- Call-to-Action Section -->
+  <section class="call-to-action">
+    <h2>Make a Difference</h2>
+    <p>Your support can help save lives. Every donation brings us closer to a world with clean water for all.</p>
+    <form id="donation-form">
+      <label for="donation-amount">Donation Amount ($):</label><br />
+      <input
+        type="number"
+        id="donation-amount"
+        name="donation-amount"
+        min="1"
+        placeholder="Enter amount"
+        required
+      />
+      <br />
+      <button type="submit" class="donate-button">Donate Now</button>
+    </form>
+  </section>
+
+  <script>
+    window.addEventListener('load', () => {
+  const modal = document.getElementById('email-modal');
+  modal.style.display = 'flex';
+
+  // Allow clicking outside the modal to close it
+  modal.addEventListener('click', (event) => {
+    if (event.target === modal) {
+      modal.style.display = 'none';
+    }
+  });
+});
+
+    document.getElementById('close-modal').addEventListener('click', () => {
+      document.getElementById('email-modal').style.display = 'none';
+    });
+
+    document.getElementById('email-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = document.getElementById('email-input').value;
+      alert(`Thanks for subscribing with ${email}!`);
+      document.getElementById('email-modal').style.display = 'none';
+    });
+
+    document.getElementById('donation-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const amount = document.getElementById('donation-amount').value;
+      if (amount && amount > 0) {
+        alert(`Thank you for your generous donation of $${amount}!`);
+        document.getElementById('donation-form').reset();
+      } else {
+        alert('Please enter a valid donation amount.');
+      }
+    });
+  </script>
+</body>
+</html>
